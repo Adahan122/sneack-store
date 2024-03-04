@@ -17,12 +17,14 @@
 
 .container {
   margin: 0 auto;
-  /* border: 2px solid black; */
+  /* border: 2px solid black;git */
   margin-top: 43px;
   width: 975px;
   height: 41px;
 }
-
+.searches__item-img {
+  width: 133px;
+}
 .header-sneakers {
   display: flex;
   justify-content: space-between;
@@ -54,6 +56,7 @@
   transition: 0.2s;
   text-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
+
 html,
 body {
   position: relative;
@@ -120,13 +123,35 @@ body {
   padding-left: 50px;
   display: flex;
   flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding-bottom: 50px;
 }
 .searches__item-crosses {
   width: 210px;
   height: 260px;
-  /* border: 2px solid black; */
 }
-
+.searches__item-crosses:hover {
+  border: 1px solid black 0.1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 2px 2px 2px 2px gray; */
+  scale: 1.1;
+  transition: 0.1s;
+}
+.searches__item-crosses-like {
+  width: 32px;
+  height: 32px;
+  background: #fef0f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.searches__item-crosses-like-img {
+  position: relative;
+  top: 6px;
+  left: 7px;
+  background: transparent;
+}
 .searches-price-tick {
   cursor: pointer;
   width: 32px;
