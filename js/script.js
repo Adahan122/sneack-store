@@ -15,6 +15,8 @@ function searchesPriceTick() {
 }
 searchesPriceTick();
 
+
+
 let userURL = "https://jsonplaceholder.typicode.com/users";
 let postsURL = "https://jsonplaceholder.typicode.com/posts";
 function getData(URL, method = "GET", body = null) {
