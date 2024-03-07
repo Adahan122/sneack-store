@@ -15,8 +15,6 @@ function searchesPriceTick() {
 }
 searchesPriceTick();
 
-
-
 let userURL = "https://jsonplaceholder.typicode.com/users";
 let postsURL = "https://jsonplaceholder.typicode.com/posts";
 function getData(URL, method = "GET", body = null) {
@@ -78,6 +76,76 @@ function renderSneakers(data) {
 fetchData("https://5c782080f150df17.mokky.dev/items").then((data) => {
   renderSneakers(data);
 });
+
+// function postName() {
+//  return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name: "Adahan" }),
+//   })
+//     .then((response) => response.json())
+//     .catch((err) => console.log(err));
+// }
+
+// postName();
+
+// function postName() {
+//   return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name: "Adahan" }),
+//   })
+//     .then((response) => response.json())
+//     .catch((err) => console.log(err));
+// }
+
+// postName();
+
+// let nameInput = document.getElementById("name");
+// let btn = document.getElementById("submit");
+
+// btn.addEventListener("click", function () {
+//   let nameValue = nameInput.value;
+//   return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name: nameValue }),
+//   })
+//     .then((response) => response.json())
+//     .catch((err) => console.log);
+// });
+
+let nameInput = document.getElementById("name");
+let passwordInput = document.getElementById("password");
+let btn = document.getElementById("submit");
+
+btn.addEventListener("click", function () {
+  let nameValue = nameInput.value;
+  let passwordValue = passwordInput.value;
+  
+  let data = {
+    name: nameValue,
+    password: passwordValue
+  };
+
+  return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data), 
+  })
+    .then((response) => response.json())
+    .catch((err) => console.log);
+});
+
+
 
 let swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,

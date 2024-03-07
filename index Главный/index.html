@@ -315,6 +315,13 @@
           </div>
         </div>
       </div>
+      <div class="name-input">
+  
+        <!-- <input type="pattern" id="name" placeholder="Эл.почта"> -->
+        <input type="email" id="name" pattern="^[a-zA-Z0-9._%+-]+@gmail.com$" title="Пожалуйста, введите допустимый адрес Gmail" placeholder="Эл.почта" required>
+        <input type="password" id="password" placeholder="Пароль">
+        <button id="submit">Зарегистрироваться</button>
+      </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/js/script.js"></script>
