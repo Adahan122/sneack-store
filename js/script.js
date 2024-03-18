@@ -50,9 +50,15 @@ function renderSneakers(data) {
       return `
     <div class="searches__item-crosses">
             <div class="searches__item-crosses-like">
-              <img class="searches__item-crosses-like-img" src="/img/Vector.svg" alt="">
+              <img class="searches__item-crosses-like-img card-like" src="/images/${
+                item.islike ? "like-2.svg" : "like-1.svg"
+              }" data-sneaker-id='${item.id}' data-is-like='${
+        item.islike ? "true" : "false"
+      }'  alt="">
             </div>
-            <a href="#"><img class="searches__item-img" src="/images/${item.imageUrl}" alt="" /></a>
+            <a href="#"><img class="searches__item-img" src="/images/${
+              item.imageUrl
+            }" alt="" /></a>
             <div class="searches__text">
               <h3 class="searches__main-title">
                 ${item.title}
@@ -73,53 +79,40 @@ function renderSneakers(data) {
     .join("");
 }
 
-fetchData("https://5c782080f150df17.mokky.dev/items").then((data) => {
-  renderSneakers(data);
+document.addEventListener("click", function (event) {
+  let target = event.target;
+
+  if (target.classList.contains("card-like")) {
+    let sneakerId = target.dataset.sneakerId;
+    let isLiked = target.dataset.isLiked === "true";
+    fetch(`https://27193aec625dd99b.mokky.dev/sneakers/${sneakerId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ islike: !isLiked }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        target.dataset.isLiked = String(!isLiked);
+        target.setAttribute(
+          "src",
+          `${
+            isLiked
+              ? "http://127.0.0.1:5500/images/like-2.svg"
+              : "http://127.0.0.1:5500/images/like-1.svg"
+          }`
+        );
+      })
+      .catch((error) => {
+        console.log("Ошибка исправляй", error);
+      });
+  }
 });
 
-// function postName() {
-//  return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ name: "Adahan" }),
-//   })
-//     .then((response) => response.json())
-//     .catch((err) => console.log(err));
-// }
-
-// postName();
-
-// function postName() {
-//   return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ name: "Adahan" }),
-//   })
-//     .then((response) => response.json())
-//     .catch((err) => console.log(err));
-// }
-
-// postName();
-
-// let nameInput = document.getElementById("name");
-// let btn = document.getElementById("submit");
-
-// btn.addEventListener("click", function () {
-//   let nameValue = nameInput.value;
-//   return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ name: nameValue }),
-//   })
-//     .then((response) => response.json())
-//     .catch((err) => console.log);
-// });
+fetchData("https://27193aec625dd99b.mokky.dev/sneakers").then((data) => {
+  renderSneakers(data);
+});
 
 let nameInput = document.getElementById("name");
 let passwordInput = document.getElementById("password");
@@ -128,10 +121,10 @@ let btn = document.getElementById("submit");
 btn.addEventListener("click", function () {
   let nameValue = nameInput.value;
   let passwordValue = passwordInput.value;
-  
+
   let data = {
     name: nameValue,
-    password: passwordValue
+    password: passwordValue,
   };
 
   return fetch("https://27193aec625dd99b.mokky.dev/favorites", {
@@ -139,13 +132,11 @@ btn.addEventListener("click", function () {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data), 
+    body: JSON.stringify(data),
   })
     .then((response) => response.json())
-    .catch((err) => console.log);
+    .catch((err) => console.log(err));
 });
-
-
 
 let swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,

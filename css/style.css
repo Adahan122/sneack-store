@@ -31,6 +31,15 @@
 }
 .header__text-snake {
   color: black;
+  padding-top: 15px;
+}
+.box {
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  height: 25px;
+  width: 20px;
 }
 .img-header-logo {
   display: flex;
@@ -130,27 +139,23 @@ body {
 .searches__item-crosses {
   width: 210px;
   height: 260px;
-}
-.searches__item-crosses:hover {
-  border: 1px solid black 0.1;
-  border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-  /* box-shadow: 2px 2px 2px 2px gray; */
-  scale: 1.1;
-  transition: 0.1s;
+  border-radius: 20px;
 }
-.searches__item-crosses-like {
+
+/* .searches__item-crosses-like {
   width: 32px;
   height: 32px;
   background: #fef0f0;
   border-radius: 8px;
   cursor: pointer;
-}
+} */
 .searches__item-crosses-like-img {
   position: relative;
   top: 6px;
   left: 7px;
   background: transparent;
+  cursor: pointer;
 }
 .searches-price-tick {
   cursor: pointer;
