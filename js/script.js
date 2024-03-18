@@ -51,9 +51,9 @@ function renderSneakers(data) {
     <div class="searches__item-crosses">
             <div class="searches__item-crosses-like">
               <img class="searches__item-crosses-like-img card-like" src="/images/${
-                item.islike ? "like-2.svg" : "like-1.svg"
+                item.isLike ? "like-2.svg" : "like-1.svg"
               }" data-sneaker-id='${item.id}' data-is-like='${
-        item.islike ? "true" : "false"
+        item.isLike ? "true" : "false"
       }'  alt="">
             </div>
             <a href="#"><img class="searches__item-img" src="/images/${
@@ -90,7 +90,7 @@ document.addEventListener("click", function (event) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ islike: !isLiked }),
+      body: JSON.stringify({ isLike: !isLiked }),
     })
       .then((response) => response.json())
       .then((data) => {
